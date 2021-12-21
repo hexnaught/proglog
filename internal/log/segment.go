@@ -116,6 +116,7 @@ func (s *segment) Close() error {
 	return nil
 }
 
+// TODO: this is as per the book, but j will always be >= 0 as is unsigned?
 func nearestMultiple(j, k uint64) uint64 {
 	if j >= 0 {
 		return (j / k) * k
