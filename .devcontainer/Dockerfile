@@ -10,7 +10,9 @@ RUN if [ "${NODE_VERSION}" != "none" ]; then su vscode -c ". /usr/local/share/nv
 RUN wget https://github.com/protocolbuffers/protobuf/releases/download/v3.19.1/protoc-3.19.1-linux-x86_64.zip &&\
     unzip protoc-3.19.1-linux-x86_64.zip -d /usr/local/protobuf &&\
     rm protoc-3.19.1-linux-x86_64.zip &&\
-    go install google.golang.org/protobuf/...@v1.27.1
+    go install google.golang.org/protobuf/...@v1.27.1 &&\
+    go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2.0 ||\
+    go install google.golang.org/grpc@v1.43.0
 
 # [Optional] Uncomment this section to install additional OS packages.
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
