@@ -45,7 +45,7 @@
 	// },
 	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "go version && echo 'export PATH=\"$PATH:/usr/local/protobuf/bin\"' >> ~/.bashrc && . ~/.bashrc && protoc --version",
-	// "postStartCommand": "go mod download",
+	"postStartCommand": "go mod download",
 	// Uncomment to connect as a non-root user. More info: https://aka.ms/vscode-remote/containers/non-root.
 	// "remoteUser": "vscode"
 }

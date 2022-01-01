@@ -1,0 +1,16 @@
+{
+  "CN": "Hexnaught Certificate Authority",
+  "key": {
+    "algo": "rsa",
+    "size": 2048
+  },
+  "names": [
+    {
+      "C": "GB",
+      "L": "Birmingham",
+      "ST": "West Midlands",
+      "O": "Hexnaught",
+      "OU": "CA Services"
+    }
+  ]
+}

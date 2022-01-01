@@ -7,12 +7,16 @@ FROM mcr.microsoft.com/vscode/devcontainers/go:0-${VARIANT}
 ARG NODE_VERSION="lts/*"
 RUN if [ "${NODE_VERSION}" != "none" ]; then su vscode -c ". /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1"; fi
 
+# Install Protobuf / GRPC tooling
 RUN wget https://github.com/protocolbuffers/protobuf/releases/download/v3.19.1/protoc-3.19.1-linux-x86_64.zip &&\
     unzip protoc-3.19.1-linux-x86_64.zip -d /usr/local/protobuf &&\
     rm protoc-3.19.1-linux-x86_64.zip &&\
     go install google.golang.org/protobuf/...@v1.27.1 &&\
-    go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2.0 ||\
-    go install google.golang.org/grpc@v1.43.0
+    go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2.0
+
+# Install Cloudflare SSL CLI
+RUN go install github.com/cloudflare/cfssl/cmd/cfssl@v1.6.1 && \
+    go install github.com/cloudflare/cfssl/cmd/cfssljson@v1.6.1
 
 # [Optional] Uncomment this section to install additional OS packages.
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
